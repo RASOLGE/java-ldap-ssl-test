@@ -1,9 +1,9 @@
 package net.unicon;
 
+import javax.naming.spi.InitialContextFactory;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-import javax.naming.spi.InitialContextFactory;
 
 // Component ensures Spring will manage a bean of this class
 // and ConfigurationProperties is an easy way to map all the properties under "ldap.*" to type strict values
@@ -12,15 +12,26 @@ import javax.naming.spi.InitialContextFactory;
 public class LdapOptions {
 
     private String[] urls;
+
     private String userId;
+
     private String password;
+
     private String baseDn;
+
     private String filter;
+
     private String authnPassword;
+
     private String[] attributes;
+
     private Class<? extends InitialContextFactory> factory;
+
     private String authentication;
+
     private Integer timeout;
+
+    private Boolean hidePasswords = true;
 
     public String[] getUrls() {
         return urls;
@@ -100,5 +111,13 @@ public class LdapOptions {
 
     public void setTimeout(Integer timeout) {
         this.timeout = timeout;
+    }
+
+    public boolean isHidePasswords() {
+        return hidePasswords != null ? hidePasswords : true;
+    }
+
+    public void setHidePasswords(Boolean hidePasswords) {
+        this.hidePasswords = hidePasswords;
     }
 }
