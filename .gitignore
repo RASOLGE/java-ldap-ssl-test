@@ -1,4 +1,6 @@
-*.class
-.idea
-*.iml
-target
+.project
+.classpath
+.settings/
+target/
+application*.properties
+!src/main/resources/application*.properties
